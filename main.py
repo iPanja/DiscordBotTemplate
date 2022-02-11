@@ -1,4 +1,4 @@
-import discord, toml
+import discord, toml, os
 from discord.ext import tasks, commands
 
 class DiscordBot(commands.Bot):
@@ -30,6 +30,8 @@ class DiscordBot(commands.Bot):
             return
         raise error
     
+# Debugging
+os.chdir("FULL PATH ADDRESS... /DiscordBotTemplate/")
 
 # Load config file
 with open('config.toml', 'r') as file:
@@ -39,5 +41,5 @@ config = toml.loads(data)
 # Start bot
 intents = discord.Intents.default()
 intents.members = True
-client = DiscordBot(command_prefix='!', intents=intents, config=config)
-client.run(config['Token'])
+client = DiscordBot(command_prefix='!', intents=intents, config=config, cogs=config['Bot']['cogs'])
+client.run(config['Bot']['Token'])

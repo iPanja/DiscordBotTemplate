@@ -1,5 +1,11 @@
+[Bot]
 Token = ''
-
 cogs = [
-    'cogs.Moderation'
+    'cogs.Moderation',
+    'cogs.Music'
 ]
+
+[Music]
+volume = 0.05
+ffmpeg_settings.before_options = '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5'
+ffmpeg_settings.options = '-vn'
